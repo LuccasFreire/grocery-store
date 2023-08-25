@@ -10,10 +10,10 @@ class CategoryDAO:
     
     @classmethod
     def read(cls):
-        with open("categoryRegistry", "r") as categoryRegistry:
+        with open("categoryRegistry.txt", "r") as categoryRegistry:
             a = categoryRegistry.readlines()
         
-        a = list(map(lambda x: x.replace('\n', ''), a))
+        # a = list(map(lambda x: x.replace('\n', ''), a))
         cls.category = list(a)
         cat = []
         for i in cls.category:
@@ -23,5 +23,5 @@ class CategoryDAO:
 # cls.category(cat[i])
 
 
-
+CategoryDAO.save("Teste")
 CategoryDAO.read()
