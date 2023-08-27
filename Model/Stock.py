@@ -1,7 +1,7 @@
 from Model import Product
 
 
-class Estoque:
+class Stock:
     def __init__(self, product: Product, quantity):
         self.product = product
         self.quantity = quantity

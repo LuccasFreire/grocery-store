@@ -23,5 +23,5 @@ class CategoryDAO:
 # cls.category(cat[i])
 
 
-CategoryDAO.save("Teste")
-CategoryDAO.read()
+# CategoryDAO.save("Teste")
+# CategoryDAO.read()
