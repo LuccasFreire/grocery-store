@@ -45,19 +45,31 @@ class CategoryController:
     def changeCategory(self, categoryToChange, newCategory):
         x = CategoryDAO.read()
         cat = list(filter(lambda x: x.category == categoryToChange, x))
+
         if len(cat) > 0:
-            cat1 = list(filter(lambda x: x.category == categoryToChange, x))
+            cat1 = list(filter(lambda x: x.category == newCategory, x))
             if len(cat1) == 0:
                 x = list(map(lambda x: Category(newCategory) if(x.category == categoryToChange) else(x), x))
-
+                print("The changement was made with success")
             else:
                 print("Category you want to change already exists")
         else:
             print("Category doesnt exist in the System")
+
         with open('categoryRegistry.txt', 'w') as categoryRegistry:
             for i in x:
                 categoryRegistry.writelines(i.category)
                 categoryRegistry.writelines('\n')
 
+    def showCategories(self):
+        categories = CategoryDAO.read()
+        if len(categories) == 0:
+            print("There are 0 categories")
+        else:
+            for i in categories:
+                print(f'Categorie:  {i.categorie}')
+
 # a = CategoryController()
 # a.registerCategory('Meat')
+# a.changeCategory("Pasta", "Lemon")
+# a.deleteCategory('Meat')

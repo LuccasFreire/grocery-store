@@ -6,16 +6,18 @@ class CategoryDAO:
     @classmethod
     def save(cls, category):
         with open("categoryRegistry.txt", "a") as categRegistry:
-            categRegistry.write(f"{category}\n")
+            categRegistry.writelines(category)
+            categRegistry.writelines('\n')
+
     
     @classmethod
     def read(cls):
-        with open("categoryRegistry.txt", "r") as categoryRegistry:
-            a = categoryRegistry.readlines()
+        with open('categoryRegistry.txt', 'r') as categRegistry:
+            cls.category = categRegistry.readlines()
+        cls.category = list(map(lambda x: x.replace('\n', ''), cls.category))
         
-        # a = list(map(lambda x: x.replace('\n', ''), a))
-        cls.category = list(a)
         cat = []
+        
         for i in cls.category:
             cat.append(Category(i))
         return cat
